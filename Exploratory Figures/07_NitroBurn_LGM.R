@@ -21,12 +21,15 @@ ggplot(data = scatterdata, mapping = aes(x = Nitrate, y = Arbuscules)) + geom_po
        y = "Arbuscules (total)",
        title = "Impact of Nitrate Conc. on AMF Colonization") +
   geom_smooth(method = "lm") +
+  stat_cor()
+  
 
 # working with Cristy on LMM fitting
 
 library(dplyr)
 library(plyr)
 library(ggplot2)
+library(ggpubr)
 
 summary <- plyr::ddply(scatterdata, c("BurnStatus", "Urbanization"), plyr::summarise, N = length(unique(PLANTID)))
 summary                            
@@ -64,4 +67,15 @@ ggplot(scatterdata, aes(scatterdata, x=BurnStatus, y=Nitrate)) +
   geom_bar(stat="identity") +
   labs(x = "Burn Status",
        y = "Nitrate (ug/g dry soil)",
-       title = "Burn Impact on Soil Nitrate Comp")
+       title = "Burn Impact on Soil Nitrate Comp.") +
+  stat_compare_means(label.y = 20)
+
+nxa <-aov(Nitrate ~ BurnStatus, data = scatterdata)
+summary(nxa)
+
+ggplot(scatterdata, aes(scatterdata, x=Urbanization, y=Nitrate)) + 
+  geom_bar(stat="identity") +
+  labs(x = "Level of Urbanization",
+       y = "Nitrate (ug/g dry soil)",
+       title = "Urbanization Impact on Soil Nitrate Comp.") +
+  stat_compare_means(label.x = 0.75, label.y = 20)
