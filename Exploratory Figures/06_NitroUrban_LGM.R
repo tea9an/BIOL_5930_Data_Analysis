@@ -6,5 +6,5 @@ ggplot(data = scatterdata, mapping = aes(x = Nitrate, y = Arbuscules, colour = `
   labs(x = "Nitrate (ug/g dry soil)",
        y = "Arbuscules (total)",
        color = "Level of Urbanization",
-       title = "Impact of Urbanization on AMF Morphology and Soil Nutrients") +
+       title = "Impact of Urbanization on AMF Colonization and Soil Nutrients") +
   geom_smooth(method = "lm")

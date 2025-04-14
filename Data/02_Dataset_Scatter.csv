@@ -1,4 +1,4 @@
-Samples,SITE,PLANT ID,Hyphae,Aseptate,Septate,Arbuscules,Vesicles,FOV,Burn Status,Urbanization,Phosphate
+Samples,SITE,PLANTID,Hyphae,Aseptate,Septate,Arbuscules,Vesicles,FOV,Burn Status,Urbanization,Phosphate
 1,BGB,Amphicarpaea_bracteata,119,84,35,7,18,100,None,Natural,2.80844471
 2,BGB,Smilax_glauca,125,76,49,1,18,100,None,Natural,2.80844471
 3,BGB,Parthenocissus_quinquefolia,94,65,29,2,6,100,None,Natural,2.122785907

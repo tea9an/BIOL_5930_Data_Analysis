@@ -1,4 +1,4 @@
-Samples,SITE,PLANT ID,Hyphae,Aseptate,Septate,Arbuscules,Vesicles,FOV,Burn Status,Urbanization,Nitrate
+Samples,SITE,PLANTID,Hyphae,Aseptate,Septate,Arbuscules,Vesicles,FOV,BurnStatus,Urbanization,Nitrate
 10,LCM,Lactuca_canadensis,5,4,1,1,0,100,High,Natural,0.436503141
 11,LCM,Kalmia_latifolia,51,21,30,1,0,100,High,Natural,0.436503141
 13,GCL,Smilax_glauca,47,23,24,12,1,100,Medium,Urban,0.121729135
