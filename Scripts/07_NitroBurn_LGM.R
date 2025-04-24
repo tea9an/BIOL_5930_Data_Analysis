@@ -1,7 +1,11 @@
 #making scatterplot
 
 library(tidyverse)
+library(conflicted)
+conflict_prefer("filter", "dplyr")
+conflict_prefer("lag", "dplyr")
 library(ggplot2)
+library(ggpubr)
 scatterdata <- read_csv("Data/02_Dataset_Nitro.csv")
 
 scatterdata$BurnStatus <- as.factor(scatterdata$BurnStatus)
@@ -18,8 +22,7 @@ ggplot(data = scatterdata, mapping = aes(x = Nitrate, y = Arbuscules, colour = `
 #scatterplot, regression, & linear model on JUST nitrate on arbuscules, p = 0.0325 = SIGNIFICANT
 ggplot(data = scatterdata, mapping = aes(x = Nitrate, y = Arbuscules)) + geom_point()+ 
   labs(x = "Nitrate (ug/g dry soil)",
-       y = "Arbuscules (total)",
-       title = "Impact of Nitrate Conc. on AMF Colonization") +
+       y = "Arbuscules (total)") +
   geom_smooth(method = "lm") +
   stat_cor()
   
@@ -63,19 +66,21 @@ summary(justnitrate)
 
 library(ggplot2)
 
-ggplot(scatterdata, aes(scatterdata, x=BurnStatus, y=Nitrate)) + 
+ggplot(scatterdata, aes(scatterdata, x=BurnStatus, y=Nitrate, fill =BurnStatus)) + 
   geom_bar(stat="identity") +
   labs(x = "Burn Status",
-       y = "Nitrate (ug/g dry soil)",
-       title = "Burn Impact on Soil Nitrate Comp.") +
-  stat_compare_means(label.y = 20)
+       y = "Nitrate (ug/g dry soil)") +
+  stat_compare_means(label.y = 20) +
+  scale_fill_brewer(palette = "Set1")
 
 nxa <-aov(Nitrate ~ BurnStatus, data = scatterdata)
 summary(nxa)
 
-ggplot(scatterdata, aes(scatterdata, x=Urbanization, y=Nitrate)) + 
+ggplot(scatterdata, aes(scatterdata, x=Urbanization, y=Nitrate, fill=Urbanization)) + 
   geom_bar(stat="identity") +
   labs(x = "Level of Urbanization",
-       y = "Nitrate (ug/g dry soil)",
-       title = "Urbanization Impact on Soil Nitrate Comp.") +
-  stat_compare_means(label.x = 0.75, label.y = 20)
+       y = "Nitrate (ug/g dry soil)") +
+  stat_compare_means(label.x = 1.7, label.y = 20) +
+  scale_fill_brewer(palette = "Paired")
+
+  
